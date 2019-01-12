@@ -1,10 +1,29 @@
 # Nokogiri Changelog
 
-## unreleased
+## unreleased minor update
+
+### Backwards incompatibilities
+
+* Nokogiri::VersionInfo will no longer contain the following
+  keys (previously these were set only when vendored libraries were
+  being used) [#1482]:
+  * `libxml/libxml2_path`
+  * `libxml/libxslt_path`
+* `nokogiri -v` will no longer emit these VersionInfo values [#1482]
+* these C macros will no longer be defined [#1482]:
+  * NOKOGIRI_LIBXML2_PATH
+  * NOKOGIRI_LIBXSLT_PATH
+* these global variables will no longer be defined [#1482]:
+  * NOKOGIRI_LIBXML2_PATH
+  * NOKOGIRI_LIBXSLT_PATH
+
+
+## unreleased patch update
 
 ### Bug fixes
 
 * [JRuby] Fix node ownership in duplicated documents. [#1060]
+
 
 ## 1.10.1 / 2019-01-13
 
