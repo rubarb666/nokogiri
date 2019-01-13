@@ -12,6 +12,7 @@ or CSS3 selectors.
 * http://nokogiri.org
 * [Installation Help](http://nokogiri.org/tutorials/installing_nokogiri.html)
 * [Tutorials](http://nokogiri.org)
+* [Cheat Sheet](https://github.com/sparklemotion/nokogiri/wiki/Cheat-sheet)
 * [GitHub](https://github.com/sparklemotion/nokogiri)
 * [Mailing List](https://groups.google.com/group/nokogiri-talk)
 * [Chat/Gitter](https://gitter.im/sparklemotion/nokogiri)
@@ -177,6 +178,12 @@ explicitly setting the encoding to EUC-JP on the parser:
   bundle install
   bundle exec rake
 ```
+
+
+## Code of Conduct
+
+We've adopted the Contributor Covenant code of conduct, which you can read in full in [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
+
 
 ## License
 

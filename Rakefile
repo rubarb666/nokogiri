@@ -159,17 +159,18 @@ HOE = Hoe.spec 'nokogiri' do
   end
 
   self.extra_dev_deps += [
+    ["concourse",          "~> 0.15"],
     ["hoe-bundler",        "~> 1.2"],
     ["hoe-debugging",      "~> 2.0"],
     ["hoe-gemspec",        "~> 1.0"],
     ["hoe-git",            "~> 1.6"],
-    ["minitest",           "~> 5.8.4"],
+    ["minitest",           "~> 5.8"],
+    ["racc",               "~> 1.4.14"],
     ["rake",               "~> 12.0"],
     ["rake-compiler",      "~> 1.0.3"],
     ["rake-compiler-dock", "~> 0.7.0"],
-    ["racc",               "~> 1.4.14"],
     ["rexical",            "~> 1.0.5"],
-    ["concourse",          "~> 0.15"],
+    ["simplecov",          "~> 0.16"],
   ]
 
   self.spec_extras = {
@@ -178,17 +179,20 @@ HOE = Hoe.spec 'nokogiri' do
   }
 
   self.testlib = :minitest
+  self.test_prelude = 'require "helper"' # ensure simplecov gets loaded before anything else
 end
 
 # ----------------------------------------
 
-def add_file_to_gem relative_path
-  target_path = File.join gem_build_path, relative_path
-  target_dir = File.dirname(target_path)
-  mkdir_p target_dir unless File.directory?(target_dir)
-  rm_f target_path
-  safe_ln relative_path, target_path
-  HOE.spec.files += [relative_path]
+def add_file_to_gem relative_source_path
+  dest_path = File.join(gem_build_path, relative_source_path)
+  dest_dir = File.dirname(dest_path)
+
+  mkdir_p dest_dir unless Dir.exist?(dest_dir)
+  rm_f dest_path if File.exist?(dest_path)
+  safe_ln relative_source_path, dest_path
+
+  HOE.spec.files << relative_source_path
 end
 
 def gem_build_path
